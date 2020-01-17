@@ -2,6 +2,11 @@
 
 Resource to upload files to S3. Unlike the [the official S3 Resource](https://github.com/concourse/s3-resource), this Resource can upload or download multiple files.
 
+This repository is a fork of [18F/s3-resource-simple](https://github.com/18F/s3-resource-simple) with support of:
+
+- [Specifying working directory for aws sync command?](https://github.com/18F/s3-resource-simple/issues/13)
+- [Asset Scripts Output version correctly + Working Directory](https://github.com/18F/s3-resource-simple/pull/21)
+
 ## Usage
 
 Include the following in your Pipeline YAML file, replacing the values in the angle brackets (`< >`):
