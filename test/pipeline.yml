@@ -1,10 +1,11 @@
 # Pipeline that clones this repository, then uploads it to S3. Local usage:
 #
-#   fly set-pipeline -t lite -n -c test/pipeline.yml -p s3-resource-simple-test -v access_key_id=<key> -v secret_access_key=<secret> -v aws-bucket=<bucket>
+#   fly set-pipeline -t lite -n -c test/pipeline.yml -p s3-resource-simple-test -v aws-access-key=<key> -v aws-secret-key=<secret> -v aws-bucket=<bucket>
 #
 resource_types:
   - name: s3-sync
     type: docker-image
+    #check_every: 24h
     source:
       repository: davidb31/s3-resource-simple
 resources:
@@ -16,12 +17,13 @@ resources:
   - name: s3-bucket
     type: s3-sync
     source:
-      access_key_id: (( aws-access-key ))
-      secret_access_key: (( aws-secret-key ))
+      access_key_id: ((aws-access-key))
+      secret_access_key: ((aws-secret-key))
       bucket: ((aws-bucket))
       path: tmp
+
 jobs:
-  - name: custom-resource-example
+  - name: custom-resource-example2
     plan:
       - get: scripts
       - put: s3-bucket

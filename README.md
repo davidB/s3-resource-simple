@@ -15,6 +15,7 @@ Include the following in your Pipeline YAML file, replacing the values in the an
 resource_types:
 - name: s3-sync
   type: docker-image
+  check_every: 48h
   source:
     repository: davidb31/s3-resource-simple
 resources:
