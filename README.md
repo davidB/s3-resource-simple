@@ -20,7 +20,8 @@ resource_types:
     repository: davidb31/s3-resource-simple
 resources:
 - name: <resource name>
-  type: <resource type name>
+  type: s3-sync
+  check_every: 72h # the resource is mainly used in put (to upload, no need to check)
   source:
     access_key_id: ((aws-access-key))
     secret_access_key: ((aws-secret-key))
